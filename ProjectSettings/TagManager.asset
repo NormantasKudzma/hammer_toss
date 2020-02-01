@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ObjectToSmash
   - BottomRespawn
+  - LeftRespawn
   layers:
   - Default
   - TransparentFX

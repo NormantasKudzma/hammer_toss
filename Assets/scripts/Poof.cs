@@ -24,9 +24,12 @@ public class Poof : MonoBehaviour
         m_AlphaSpeed = (1.0f - m_StartAlpha) / m_Growtime;
 
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
-        var color = m_SpriteRenderer.color;
-        color.a = m_StartAlpha;
-        m_SpriteRenderer.color = color;
+        if (m_SpriteRenderer != null)
+        {
+            var color = m_SpriteRenderer.color;
+            color.a = m_StartAlpha;
+            m_SpriteRenderer.color = color;
+        }
     }
 
     // Update is called once per frame
@@ -36,9 +39,12 @@ public class Poof : MonoBehaviour
         s *= m_ScaleSpeed;
         transform.localScale = s;
 
-        var color = m_SpriteRenderer.color;
-        color.a += m_AlphaSpeed * Time.fixedDeltaTime;
-        m_SpriteRenderer.color = color;
+        if (m_SpriteRenderer != null)
+        {
+            var color = m_SpriteRenderer.color;
+            color.a += m_AlphaSpeed * Time.fixedDeltaTime;
+            m_SpriteRenderer.color = color;
+        }
 
         if (m_Growtime > 0.0f)
         {

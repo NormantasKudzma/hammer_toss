@@ -51,6 +51,12 @@ public class ThrowItem : MonoBehaviour
         throwitem.gravityScale = 6.5f;
         enablerotate = true;
         m_State = State.STATE_THROWING;
+
+        var splitHandScript = GetComponent<SplitHand>();
+        if (splitHandScript != null)
+        {
+            splitHandScript.ThrowItem();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

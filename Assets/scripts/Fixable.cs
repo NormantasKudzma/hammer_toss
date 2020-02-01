@@ -16,11 +16,10 @@ public class Fixable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Assert(m_NextLevel != null, "Missing next level!!");
+        Debug.Assert(m_NextLevel != null, "Missing next level!!");
         Debug.Assert(m_FixedSprite != null, "Missing fixed sprite!!");
-        //Debug.Assert(SceneManager.GetSceneByName(m_NextLevel) != null, "Scene with name " + m_NextLevel + " Does not exist!!");
-
-        ShowPoof();
+        Debug.Assert(SceneManager.GetSceneByName(m_NextLevel) != null, "Scene with name " + m_NextLevel + " Does not exist!!");
+        
     }
 
     // Update is called once per frame
@@ -28,18 +27,24 @@ public class Fixable : MonoBehaviour
     {
         if (m_Countdown)
         {
-            m_TimeUntilNextLevel -= Time.deltaTime;
-            if (m_TimeUntilNextLevel <= 0.0f)
+            if (m_TimeUntilNextLevel > 0.0f)
             {
-                // STUB
-                Debug.Log("Run next level now");
-                SceneManager.LoadScene(m_NextLevel);
+                m_TimeUntilNextLevel -= Time.deltaTime;
+                if (m_TimeUntilNextLevel <= 0.0f)
+                {
+                    // STUB
+                    Debug.Log("Run next level now");
+                    SceneManager.LoadScene(m_NextLevel);
+                }
             }
 
-            m_TimeUntilRepaired -= Time.deltaTime;
-            if (m_TimeUntilRepaired <= 0.0f)
+            if (m_TimeUntilRepaired > 0.0f)
             {
-                Repair();
+                m_TimeUntilRepaired -= Time.deltaTime;
+                if (m_TimeUntilRepaired <= 0.0f)
+                {
+                    Repair();
+                }
             }
         }
     }

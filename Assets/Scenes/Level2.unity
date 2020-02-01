@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 5988996177618918133, guid: d60abea6339ad024f80fe028600a60dd,
         type: 3}
       propertyPath: m_Text
-      value: Maybe you can fix it
+      value: Can't be worse, right?
       objectReference: {fileID: 0}
     - target: {fileID: 6569392353240863671, guid: d60abea6339ad024f80fe028600a60dd,
         type: 3}

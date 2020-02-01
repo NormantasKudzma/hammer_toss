@@ -75,7 +75,7 @@ public class Fixable : MonoBehaviour
         }
         if (m_BrokenObject != null)
         {
-            m_BrokenObject.SetActive(true);
+            m_BrokenObject.SetActive(false);
         }
     }
 

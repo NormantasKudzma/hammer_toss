@@ -203,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 5270377969503760088, guid: 30454e6208d673443999948a4839661e,
         type: 3}
       propertyPath: m_Name
-      value: Hearth
+      value: mona_lisa
       objectReference: {fileID: 0}
     - target: {fileID: 5270377969503760088, guid: 30454e6208d673443999948a4839661e,
         type: 3}

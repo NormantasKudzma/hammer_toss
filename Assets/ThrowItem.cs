@@ -27,7 +27,7 @@ public class ThrowItem : MonoBehaviour
     {
         if(collision.gameObject.tag == "ObjectToSmash")
         { 
-            throwitem.velocity = new Vector3(-5, 20, 0);
+            throwitem.velocity = new Vector3(-35, 40, 0);
             wark = true;
         }
         if(collision.gameObject.tag == "BottomRespawn" && !wark)

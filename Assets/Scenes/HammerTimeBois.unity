@@ -132,9 +132,9 @@ GameObject:
   - component: {fileID: 56696415}
   - component: {fileID: 56696414}
   - component: {fileID: 56696413}
-  - component: {fileID: 56696412}
   - component: {fileID: 56696416}
   - component: {fileID: 56696417}
+  - component: {fileID: 56696412}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -159,9 +159,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &56696413
 MonoBehaviour:
@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwitem: {fileID: 56696412}
   wark: 0
+  strenght: 0
   enablerotate: 0
 --- !u!212 &56696414
 SpriteRenderer:

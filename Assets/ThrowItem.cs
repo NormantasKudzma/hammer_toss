@@ -7,8 +7,15 @@ public class ThrowItem : MonoBehaviour
 {
     public Rigidbody2D throwitem;
     public bool wark;
+    public float strenght;
+
+   /* public bool up;
+    public bool down;*/
+
 
     public bool enablerotate;
+
+  
     int a = 0;
     // Start is called before the first frame update
     private void Awake()
@@ -16,14 +23,16 @@ public class ThrowItem : MonoBehaviour
         throwitem.GetComponent<Rigidbody2D>();
         throwitem.constraints = RigidbodyConstraints2D.FreezePositionY;
 
+       
     }
 
 
     void throwObject()
     {
         throwitem.constraints = RigidbodyConstraints2D.None;
-        throwitem.velocity = new Vector3(35,35,0);
+        throwitem.velocity = new Vector3(strenght,40,0);
         throwitem.gravityScale = 6.5f;
+        enablerotate = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,20 +55,34 @@ public class ThrowItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
+        if(throwitem.position.y <= 6)
+        {
+            strenght = 10;
+        }
+       
+        if(throwitem.position.y >= 10)
+        {
+            strenght = 30 ;
+        }
+
+        // Vietoje rotationas kol nera user input'o
         if (throwitem.position.y <= 5.6295f && a == 0)
         {
+            
             throwitem.velocity = new Vector3(0, 10, 0);
-            throwitem.constraints = RigidbodyConstraints2D.FreezePositionX;
-            enablerotate = true;
 
+          throwitem.constraints = RigidbodyConstraints2D.None;
+           
         }
-        if (throwitem.position.y >= 10.6295f && a == 0)
+
+        if (throwitem.position.y >= 10.5295f && a == 0)
         {
             throwitem.velocity = new Vector3(0, -10, 0);
-            throwitem.constraints = RigidbodyConstraints2D.FreezePositionX;
-            //throwitem.transform.Rotate(0, 0, -360 * Time.deltaTime);
-            enablerotate = true;
+            
+
         }
+      
         if (Input.GetKeyDown(KeyCode.Mouse0) && a == 0)
         {
             a = 1;
@@ -76,7 +99,7 @@ public class ThrowItem : MonoBehaviour
         if (!wark && a==1)
         {
             throwitem.constraints = RigidbodyConstraints2D.None;
-            throwitem.transform.Rotate(0, 0, -360 * Time.deltaTime);
+           // throwitem.transform.Rotate(0, 0, -360 * Time.deltaTime);
         }
     }
 }

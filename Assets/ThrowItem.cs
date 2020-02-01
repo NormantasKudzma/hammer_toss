@@ -19,15 +19,14 @@ public class ThrowItem : MonoBehaviour
     void throwObject()
     {
         throwitem.constraints = RigidbodyConstraints2D.None;
-        throwitem.velocity = new Vector3(20,20,0);
+        throwitem.velocity = new Vector3(35,35,0);
         throwitem.gravityScale = 6.5f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "ObjectToSmash")
-        {
-            collision.gameObject.SetActive(false);
+        { 
             throwitem.velocity = new Vector3(-5, 20, 0);
             wark = true;
         }
@@ -40,7 +39,7 @@ public class ThrowItem : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             throwObject();
         }
@@ -48,7 +47,7 @@ public class ThrowItem : MonoBehaviour
         {
             throwitem.transform.Rotate(0, 0, 360 * Time.deltaTime);
         }
-        if(!wark && Input.GetKey(KeyCode.Mouse0))
+        if (!wark && Input.GetKey(KeyCode.Mouse0))
         {
             throwitem.transform.Rotate(0, 0, -360 * Time.deltaTime);
         }

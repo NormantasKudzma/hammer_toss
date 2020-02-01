@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fixable : MonoBehaviour
 {
-    public GameObject m_NextLevel;
+    public string m_NextLevel;
     public GameObject m_HitEffect;
     public Sprite m_FixedSprite;
 
@@ -14,7 +15,9 @@ public class Fixable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Assert(m_NextLevel != null, "Missing next level!!");
+        Debug.Assert(m_FixedSprite != null, "Missing fixed sprite!!");
+        Debug.Assert(SceneManager.GetSceneByName(m_NextLevel) != null, "Scene with name " + m_NextLevel + " Does not exist!!");
     }
 
     // Update is called once per frame
@@ -27,6 +30,7 @@ public class Fixable : MonoBehaviour
             {
                 // STUB
                 Debug.Log("Run next level now");
+                SceneManager.LoadScene(m_NextLevel);
             }
         }
     }
@@ -34,8 +38,9 @@ public class Fixable : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col) 
     {
         m_Countdown = true;
-        // STUB
-        // start collision effect
-        // show fixed object
+
+        Debug.Log("You fixed this thing! Will run next level soon");
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = m_FixedSprite;
     }
 }

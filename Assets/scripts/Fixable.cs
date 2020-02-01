@@ -32,8 +32,6 @@ public class Fixable : MonoBehaviour
                 m_TimeUntilNextLevel -= Time.deltaTime;
                 if (m_TimeUntilNextLevel <= 0.0f)
                 {
-                    // STUB
-                    Debug.Log("Run next level now");
                     SceneManager.LoadScene(m_NextLevel);
                 }
             }
@@ -71,7 +69,7 @@ public class Fixable : MonoBehaviour
     {
         if (m_HitEffect)
         {
-            Object.Instantiate(m_HitEffect, this.transform);
+            Instantiate(m_HitEffect, transform);
         }
     }
 }

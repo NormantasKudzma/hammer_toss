@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/HammerTimeBois.unity
+    guid: bb8c42ba5ccedb546876f1684aacd818
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 9101d4a4048924240be0d02079bc0f6a
   m_configObjects: {}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThrowItem : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class ThrowItem : MonoBehaviour
             throwitem.velocity = new Vector3(-5, 20, 0);
             wark = true;
         }
+        if(collision.gameObject.tag == "BottomRespawn" && !wark)
+        {
+            SceneManager.LoadScene("HammerTimeBois");
+        }
     }
     // Update is called once per frame
     void Update()
@@ -42,6 +47,10 @@ public class ThrowItem : MonoBehaviour
         if(wark)
         {
             throwitem.transform.Rotate(0, 0, 360 * Time.deltaTime);
+        }
+        if(!wark && Input.GetKey(KeyCode.Mouse0))
+        {
+            throwitem.transform.Rotate(0, 0, -360 * Time.deltaTime);
         }
     }
 }

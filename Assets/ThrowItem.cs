@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class ThrowItem : MonoBehaviour
 {
+    enum State
+    {
+        STATE_IDLE,
+        STATE_THROWING,
+    }
+
     public Rigidbody2D throwitem;
     public bool wark;
-    public float strenght;
+    public float strenght = 200;
 
    /* public bool up;
     public bool down;*/
@@ -15,6 +21,14 @@ public class ThrowItem : MonoBehaviour
 
     public bool enablerotate;
 
+    public float m_IdleRotationSpeed = 90.0f;
+    public float m_IdleMinAngle = 0.0f;
+    public float m_IdleMaxAngle = 90.0f;
+    public float m_IdleRotDist = 4.0f;
+    private State m_State;
+    private Vector3 m_StartingPos;
+    private float m_IdleAngle = 0.0f;
+    public GameObject m_PivotObject;
   
     int a = 0;
     // Start is called before the first frame update
@@ -23,16 +37,21 @@ public class ThrowItem : MonoBehaviour
         throwitem.GetComponent<Rigidbody2D>();
         throwitem.constraints = RigidbodyConstraints2D.FreezePositionY;
 
-       
+        m_State = State.STATE_IDLE;
+        m_StartingPos = transform.position;
     }
 
 
     void throwObject()
     {
         throwitem.constraints = RigidbodyConstraints2D.None;
-        throwitem.velocity = new Vector3(strenght,40,0);
+
+        var throwAngle = m_IdleAngle - 50.0f;
+        throwitem.velocity = new Vector3(-strenght * Mathf.Sin(Mathf.Deg2Rad * throwAngle), strenght * Mathf.Cos(Mathf.Deg2Rad * throwAngle) * 1.5f, 0);
+
         throwitem.gravityScale = 6.5f;
         enablerotate = true;
+        m_State = State.STATE_THROWING;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +64,7 @@ public class ThrowItem : MonoBehaviour
         }
         if(collision.gameObject.tag == "BottomRespawn" && !wark)
         {
-            SceneManager.LoadScene("HammerTimeBois");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
        /* if(collision.gameObject.tag == "LeftRespawn")
         {
@@ -55,8 +74,27 @@ public class ThrowItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-        if(throwitem.position.y <= 6)
+        if (m_State == State.STATE_IDLE)
+        {
+            m_IdleAngle += Time.deltaTime * m_IdleRotationSpeed;
+            if (m_IdleAngle <= m_IdleMinAngle || m_IdleAngle >= m_IdleMaxAngle)
+            {
+                m_IdleAngle = Mathf.Clamp(m_IdleAngle, m_IdleMinAngle + 0.5f, m_IdleMaxAngle - 0.5f);
+                m_IdleRotationSpeed = -m_IdleRotationSpeed;
+            }
+
+            var angle = transform.localEulerAngles;
+            angle.z = m_IdleAngle;
+            transform.localEulerAngles = angle;
+            
+            var pos = transform.position;
+            pos.x = m_StartingPos.x - Mathf.Sin(Mathf.Deg2Rad * m_IdleAngle) * m_IdleRotDist;
+            pos.y = m_StartingPos.y - Mathf.Cos(Mathf.Deg2Rad * m_IdleAngle) * m_IdleRotDist;
+            transform.position = pos;
+        }
+
+
+      /*  if(throwitem.position.y <= 6)
         {
             strenght = 10;
         }
@@ -64,10 +102,10 @@ public class ThrowItem : MonoBehaviour
         if(throwitem.position.y >= 10)
         {
             strenght = 30 ;
-        }
+        }*/
 
         // Vietoje rotationas kol nera user input'o
-        if (throwitem.position.y <= 5.6295f && a == 0)
+       /* if (throwitem.position.y <= 5.6295f && a == 0)
         {
             
             throwitem.velocity = new Vector3(0, 10, 0);
@@ -81,7 +119,7 @@ public class ThrowItem : MonoBehaviour
             throwitem.velocity = new Vector3(0, -10, 0);
             
 
-        }
+        }*/
       
         if (Input.GetKeyDown(KeyCode.Mouse0) && a == 0)
         {

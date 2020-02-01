@@ -10,14 +10,17 @@ public class Fixable : MonoBehaviour
     public Sprite m_FixedSprite;
 
     private float m_TimeUntilNextLevel = 3.0f;
+    private float m_TimeUntilRepaired = 0.3f;
     private bool m_Countdown = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Assert(m_NextLevel != null, "Missing next level!!");
+        //Debug.Assert(m_NextLevel != null, "Missing next level!!");
         Debug.Assert(m_FixedSprite != null, "Missing fixed sprite!!");
-        Debug.Assert(SceneManager.GetSceneByName(m_NextLevel) != null, "Scene with name " + m_NextLevel + " Does not exist!!");
+        //Debug.Assert(SceneManager.GetSceneByName(m_NextLevel) != null, "Scene with name " + m_NextLevel + " Does not exist!!");
+
+        ShowPoof();
     }
 
     // Update is called once per frame
@@ -32,6 +35,12 @@ public class Fixable : MonoBehaviour
                 Debug.Log("Run next level now");
                 SceneManager.LoadScene(m_NextLevel);
             }
+
+            m_TimeUntilRepaired -= Time.deltaTime;
+            if (m_TimeUntilRepaired <= 0.0f)
+            {
+                Repair();
+            }
         }
     }
 
@@ -43,9 +52,21 @@ public class Fixable : MonoBehaviour
         }
 
         m_Countdown = true;
-
         Debug.Log("You fixed this thing! Will run next level soon");
+        ShowPoof();
+    }
+
+    void Repair()
+    {
         var spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = m_FixedSprite;
+    }
+
+    void ShowPoof()
+    {
+        if (m_HitEffect)
+        {
+            Object.Instantiate(m_HitEffect, this.transform);
+        }
     }
 }

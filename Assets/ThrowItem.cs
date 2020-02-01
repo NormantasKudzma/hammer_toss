@@ -13,7 +13,7 @@ public class ThrowItem : MonoBehaviour
 
     public Rigidbody2D throwitem;
     public bool wark;
-    public float strenght = 200;
+    public float strenght = 45;
 
    /* public bool up;
     public bool down;*/
@@ -22,9 +22,9 @@ public class ThrowItem : MonoBehaviour
     public bool enablerotate;
 
     public float m_IdleRotationSpeed = 90.0f;
-    public float m_IdleMinAngle = 0.0f;
-    public float m_IdleMaxAngle = 90.0f;
-    public float m_IdleRotDist = 4.0f;
+    public float m_IdleMinAngle = -33.0f;
+    public float m_IdleMaxAngle = 50.0f;
+    public float m_IdleRotDist = 0.17f;
     private State m_State;
     private Vector3 m_StartingPos;
     private float m_IdleAngle = 0.0f;
@@ -40,8 +40,7 @@ public class ThrowItem : MonoBehaviour
         m_State = State.STATE_IDLE;
         m_StartingPos = transform.position;
     }
-
-
+    
     void throwObject()
     {
         throwitem.constraints = RigidbodyConstraints2D.None;
@@ -66,11 +65,8 @@ public class ThrowItem : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-       /* if(collision.gameObject.tag == "LeftRespawn")
-        {
-            SceneManager.LoadScene("Level2");
-        }*/
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -86,41 +82,12 @@ public class ThrowItem : MonoBehaviour
             var angle = transform.localEulerAngles;
             angle.z = m_IdleAngle;
             transform.localEulerAngles = angle;
-            
-            var pos = transform.position;
-            pos.x = m_StartingPos.x - Mathf.Sin(Mathf.Deg2Rad * m_IdleAngle) * m_IdleRotDist;
-            pos.y = m_StartingPos.y - Mathf.Cos(Mathf.Deg2Rad * m_IdleAngle) * m_IdleRotDist;
-            transform.position = pos;
+
+            var pivot = m_StartingPos - m_PivotObject.transform.localPosition;
+            pivot = Quaternion.Euler(0.0f, 0.0f, 250 + m_IdleAngle) * pivot * m_IdleRotDist;
+            transform.position = m_StartingPos + pivot;
         }
-
-
-      /*  if(throwitem.position.y <= 6)
-        {
-            strenght = 10;
-        }
-       
-        if(throwitem.position.y >= 10)
-        {
-            strenght = 30 ;
-        }*/
-
-        // Vietoje rotationas kol nera user input'o
-       /* if (throwitem.position.y <= 5.6295f && a == 0)
-        {
-            
-            throwitem.velocity = new Vector3(0, 10, 0);
-
-          throwitem.constraints = RigidbodyConstraints2D.None;
-           
-        }
-
-        if (throwitem.position.y >= 10.5295f && a == 0)
-        {
-            throwitem.velocity = new Vector3(0, -10, 0);
-            
-
-        }*/
-      
+        
         if (Input.GetKeyDown(KeyCode.Mouse0) && a == 0)
         {
             a = 1;

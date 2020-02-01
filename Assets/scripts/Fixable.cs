@@ -35,8 +35,13 @@ public class Fixable : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col) 
+    void OnTriggerEnter2D(Collider2D col)
     {
+        if (m_Countdown)
+        {
+            return;
+        }
+
         m_Countdown = true;
 
         Debug.Log("You fixed this thing! Will run next level soon");

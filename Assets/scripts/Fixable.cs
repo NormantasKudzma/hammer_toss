@@ -9,6 +9,9 @@ public class Fixable : MonoBehaviour
     public GameObject m_HitEffect;
     public Sprite m_FixedSprite;
 
+    public GameObject m_FixedObject;
+    public GameObject m_BrokenObject;
+
     private float m_TimeUntilNextLevel = 3.0f;
     private float m_TimeUntilRepaired = 0.3f;
     private bool m_Countdown = false;
@@ -17,7 +20,6 @@ public class Fixable : MonoBehaviour
     void Start()
     {
         Debug.Assert(m_NextLevel != null, "Missing next level!!");
-        Debug.Assert(m_FixedSprite != null, "Missing fixed sprite!!");
         Debug.Assert(SceneManager.GetSceneByName(m_NextLevel) != null, "Scene with name " + m_NextLevel + " Does not exist!!");
         
     }
@@ -62,7 +64,19 @@ public class Fixable : MonoBehaviour
     void Repair()
     {
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = m_FixedSprite;
+        if (spriteRenderer != null && m_FixedSprite != null)
+        {
+            spriteRenderer.sprite = m_FixedSprite;
+        }
+
+        if (m_FixedObject != null)
+        {
+            m_FixedObject.SetActive(true);
+        }
+        if (m_BrokenObject != null)
+        {
+            m_BrokenObject.SetActive(true);
+        }
     }
 
     void ShowPoof()

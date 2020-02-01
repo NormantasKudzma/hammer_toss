@@ -22,12 +22,13 @@ public class ThrowItem : MonoBehaviour
     public bool enablerotate;
 
     public float m_IdleRotationSpeed = 90.0f;
-    public float m_IdleMinAngle = -90.0f;
-    public float m_IdleMaxAngle = 0.0f;
+    public float m_IdleMinAngle = 0.0f;
+    public float m_IdleMaxAngle = 90.0f;
     public float m_IdleRotDist = 4.0f;
     private State m_State;
     private Vector3 m_StartingPos;
     private float m_IdleAngle = 0.0f;
+    public GameObject m_PivotObject;
   
     int a = 0;
     // Start is called before the first frame update
@@ -43,11 +44,10 @@ public class ThrowItem : MonoBehaviour
 
     void throwObject()
     {
-        Debug.Log("Throw angle " + m_IdleAngle);
-
         throwitem.constraints = RigidbodyConstraints2D.None;
-        throwitem.velocity = new Vector3(-strenght * Mathf.Sin(Mathf.Deg2Rad * m_IdleAngle), strenght * Mathf.Cos(Mathf.Deg2Rad * m_IdleAngle) * 1.5f, 0);
-        Debug.Log("vector " + throwitem.velocity.ToString());
+
+        var throwAngle = m_IdleAngle - 50.0f;
+        throwitem.velocity = new Vector3(-strenght * Mathf.Sin(Mathf.Deg2Rad * throwAngle), strenght * Mathf.Cos(Mathf.Deg2Rad * throwAngle) * 1.5f, 0);
 
         throwitem.gravityScale = 6.5f;
         enablerotate = true;
@@ -76,7 +76,7 @@ public class ThrowItem : MonoBehaviour
     {
         if (m_State == State.STATE_IDLE)
         {
-            m_IdleAngle -= Time.deltaTime * m_IdleRotationSpeed;
+            m_IdleAngle += Time.deltaTime * m_IdleRotationSpeed;
             if (m_IdleAngle <= m_IdleMinAngle || m_IdleAngle >= m_IdleMaxAngle)
             {
                 m_IdleAngle = Mathf.Clamp(m_IdleAngle, m_IdleMinAngle + 0.5f, m_IdleMaxAngle - 0.5f);
@@ -86,10 +86,10 @@ public class ThrowItem : MonoBehaviour
             var angle = transform.localEulerAngles;
             angle.z = m_IdleAngle;
             transform.localEulerAngles = angle;
-
+            
             var pos = transform.position;
             pos.x = m_StartingPos.x - Mathf.Sin(Mathf.Deg2Rad * m_IdleAngle) * m_IdleRotDist;
-            pos.y = m_StartingPos.y + Mathf.Cos(Mathf.Deg2Rad * m_IdleAngle) * m_IdleRotDist;
+            pos.y = m_StartingPos.y - Mathf.Cos(Mathf.Deg2Rad * m_IdleAngle) * m_IdleRotDist;
             transform.position = pos;
         }
 

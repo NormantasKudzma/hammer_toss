@@ -25,11 +25,11 @@ public class SpriteMoveLeftRight : MonoBehaviour
         }
         if (image.gameObject.transform.position.x <= MoveLeftTill)
         {
-            image.velocity = new Vector3(20, 0, 0);
+            image.velocity = new Vector3(5, 0, 0);
         }
         if (image.gameObject.transform.position.x >= MoveRightTill)
         {
-            image.velocity = new Vector3(-20, 0, 0);
+            image.velocity = new Vector3(-5, 0, 0);
         }
     }
 }

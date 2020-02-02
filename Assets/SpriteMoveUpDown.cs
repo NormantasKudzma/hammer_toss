@@ -30,11 +30,13 @@ public class SpriteMoveUpDown : MonoBehaviour
         }
         if (image.gameObject.transform.position.y >= MoveUpTillCoordinates)
         {
+            image.constraints = RigidbodyConstraints2D.FreezePositionX;
             image.velocity = new Vector3(0, -10, 0);
+            
         }
         if (image.gameObject.transform.position.y <= DownCoordinatesTill)
         {
-            image.velocity = new Vector3(0, 20, 0);
+            image.velocity = new Vector3(0, 18, 0);
         }
         
     }

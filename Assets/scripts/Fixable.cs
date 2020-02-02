@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Fixable : MonoBehaviour
 {
+    public ScreenMan ScreenMan;
     public GameObject Counter;
     public string m_NextLevel;
     public GameObject m_HitEffect;
@@ -13,7 +14,8 @@ public class Fixable : MonoBehaviour
     public GameObject m_FixedObject;
     public GameObject m_BrokenObject;
 
-    private float m_TimeUntilNextLevel = 3.0f;
+    private float m_TimeUntilNextLevel = 4.0f;
+    private float m_TimeUntilWinScreen = 2.0f;
     private float m_TimeUntilRepaired = 0.3f;
     private bool m_Countdown = false;
 
@@ -41,6 +43,19 @@ public class Fixable : MonoBehaviour
                 if (m_TimeUntilNextLevel <= 0.0f)
                 {
                     SceneManager.LoadScene(m_NextLevel);
+                }
+            }
+
+            if (m_TimeUntilWinScreen > 0.0f)
+            {
+                m_TimeUntilWinScreen -= Time.deltaTime;
+                if (m_TimeUntilWinScreen <= 0.0f)
+                {
+                    if (ScreenMan != null)
+                    {
+                        Debug.Log("win win win");
+                        ScreenMan.ShowWinScreen();
+                    }
                 }
             }
 

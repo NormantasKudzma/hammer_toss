@@ -1069,6 +1069,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3519484504103912183, guid: d60abea6339ad024f80fe028600a60dd,
+        type: 3}
+      propertyPath: m_Text
+      value: _________________________________________
+      objectReference: {fileID: 0}
     - target: {fileID: 3846222454334694352, guid: d60abea6339ad024f80fe028600a60dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1127,12 +1132,17 @@ PrefabInstance:
     - target: {fileID: 5988996177618918133, guid: d60abea6339ad024f80fe028600a60dd,
         type: 3}
       propertyPath: m_Text
-      value: Better than chocolate
+      value: Quit kitten around and start repairin things
       objectReference: {fileID: 0}
     - target: {fileID: 6569392353240863671, guid: d60abea6339ad024f80fe028600a60dd,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 7.7700005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7242754350789671071, guid: d60abea6339ad024f80fe028600a60dd,
+        type: 3}
+      propertyPath: m_Text
+      value: _________________________________________
       objectReference: {fileID: 0}
     - target: {fileID: 7823332690612794494, guid: d60abea6339ad024f80fe028600a60dd,
         type: 3}

@@ -11,6 +11,7 @@ public class ThrowItem : MonoBehaviour
         STATE_THROWING,
     }
 
+    public ScreenMan Screens;
     public GameObject Counter;
     public Rigidbody2D throwitem;
     public bool wark;
@@ -32,6 +33,8 @@ public class ThrowItem : MonoBehaviour
     public GameObject m_PivotObject;
 
     private HammerCounter m_Counter;
+    private bool m_Countdown = false;
+    private float m_TimeUntilLoseScreen = 2.0f;
   
     int a = 0;
     // Start is called before the first frame update
@@ -85,13 +88,40 @@ public class ThrowItem : MonoBehaviour
         }
         if(collision.gameObject.tag == "BottomRespawn" && !wark)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (HammerCounter.CurrentCount <= 0)
+            {
+                if (!m_Countdown)
+                {
+                    m_Countdown = true;
+                    if (Screens != null)
+                    {
+                        Screens.ShowLoseScreen();
+                    }
+                }
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (m_Countdown)
+        {
+            if (m_TimeUntilLoseScreen > 0.0f)
+            {
+                m_TimeUntilLoseScreen -= Time.deltaTime;
+                if (m_TimeUntilLoseScreen <= 0.0f)
+                {
+                    HammerCounter.CurrentCount = 3;
+                    SceneManager.LoadScene("HammerTimeBois");
+                }
+            }
+            return;
+        }
         if (m_State == State.STATE_IDLE)
         {
             m_IdleAngle += Time.deltaTime * m_IdleRotationSpeed;

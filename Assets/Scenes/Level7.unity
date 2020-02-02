@@ -668,6 +668,11 @@ PrefabInstance:
       propertyPath: Counter
       value: 
       objectReference: {fileID: 2146276475}
+    - target: {fileID: 2371828539753458801, guid: 16d56b7eaf79c914dbca3f941dda7350,
+        type: 3}
+      propertyPath: Screens
+      value: 
+      objectReference: {fileID: 760592892}
     - target: {fileID: 2371828539753458803, guid: 16d56b7eaf79c914dbca3f941dda7350,
         type: 3}
       propertyPath: m_LocalPosition.x

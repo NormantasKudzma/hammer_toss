@@ -29,6 +29,8 @@ public class Poof : MonoBehaviour
             var color = m_SpriteRenderer.color;
             color.a = m_StartAlpha;
             m_SpriteRenderer.color = color;
+
+            m_SpriteRenderer.sortingOrder = 100;
         }
     }
 

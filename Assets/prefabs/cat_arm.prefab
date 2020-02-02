@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2371828539753458807
@@ -92,9 +92,9 @@ GameObject:
   - component: {fileID: 2371828539753458803}
   - component: {fileID: 2371828539753458802}
   - component: {fileID: 2371828539753458801}
-  - component: {fileID: 2371828539753458764}
   - component: {fileID: 2371828539753458800}
   - component: {fileID: 5568346}
+  - component: {fileID: 3872994025294868578}
   m_Layer: 0
   m_Name: cat_arm
   m_TagString: Untagged
@@ -191,32 +191,6 @@ MonoBehaviour:
   m_IdleMaxAngle: 50
   m_IdleRotDist: 0.17
   m_PivotObject: {fileID: 2371828540885850253}
---- !u!61 &2371828539753458764
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371828539753458807}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -4.79, y: -0.24}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
-    newSize: {x: 10, y: 10}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 15.73, y: 5.68}
-  m_EdgeRadius: 0
 --- !u!50 &2371828539753458800
 Rigidbody2D:
   serializedVersion: 4
@@ -254,6 +228,22 @@ MonoBehaviour:
   m_StayInPlace: {fileID: 3004850931065320929}
   m_GoWithHand: {fileID: 3831636179409446610}
   m_DeleteThis: {fileID: 36620951677264798}
+--- !u!70 &3872994025294868578
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371828539753458807}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -6.88, y: 0.44}
+  m_Size: {x: 7.08, y: 2.6}
+  m_Direction: 1
 --- !u!1 &2371828540885850253
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5980215664022318125
 Transform:
   m_ObjectHideFlags: 0

@@ -313,6 +313,11 @@ PrefabInstance:
       propertyPath: Counter
       value: 
       objectReference: {fileID: 1005715513}
+    - target: {fileID: 5270377969503760071, guid: 30454e6208d673443999948a4839661e,
+        type: 3}
+      propertyPath: ScreenMan
+      value: 
+      objectReference: {fileID: 901098904}
     - target: {fileID: 5270377969503760088, guid: 30454e6208d673443999948a4839661e,
         type: 3}
       propertyPath: m_Name

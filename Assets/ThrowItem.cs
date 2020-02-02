@@ -29,7 +29,9 @@ public class ThrowItem : MonoBehaviour
     private Vector3 m_StartingPos;
     private float m_IdleAngle = 0.0f;
     public GameObject m_PivotObject;
-  
+
+    private GameObject m_Camera;
+
     int a = 0;
     // Start is called before the first frame update
     private void Awake()
@@ -39,6 +41,8 @@ public class ThrowItem : MonoBehaviour
 
         m_State = State.STATE_IDLE;
         m_StartingPos = transform.position;
+
+        m_Camera = ((Camera)FindObjectOfType(typeof(Camera))).gameObject;
     }
     
     void throwObject()
@@ -92,6 +96,13 @@ public class ThrowItem : MonoBehaviour
             var pivot = m_StartingPos - m_PivotObject.transform.localPosition;
             pivot = Quaternion.Euler(0.0f, 0.0f, 250 + m_IdleAngle) * pivot * m_IdleRotDist;
             transform.position = m_StartingPos + pivot;
+        }
+        else if (m_State == State.STATE_THROWING)
+        {
+            var pos = m_Camera.transform.position;
+            pos.x = transform.position.x;
+            pos.y = transform.position.y;
+            m_Camera.transform.position = pos;
         }
         
         if (Input.GetKeyDown(KeyCode.Mouse0) && a == 0)

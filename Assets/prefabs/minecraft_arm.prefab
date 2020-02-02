@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2371828539753458803}
   - component: {fileID: 2371828539753458802}
   - component: {fileID: 2371828539753458801}
-  - component: {fileID: 2371828539753458764}
   - component: {fileID: 2371828539753458800}
   - component: {fileID: 5568346}
+  - component: {fileID: 1207295446412066423}
   m_Layer: 0
   m_Name: minecraft_arm
   m_TagString: Untagged
@@ -109,32 +109,6 @@ MonoBehaviour:
   m_IdleMaxAngle: 50
   m_IdleRotDist: 0.17
   m_PivotObject: {fileID: 2371828540885850253}
---- !u!61 &2371828539753458764
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371828539753458807}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -2.9, y: 4}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
-    newSize: {x: 10, y: 10}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 8, y: 4.2}
-  m_EdgeRadius: 0
 --- !u!50 &2371828539753458800
 Rigidbody2D:
   serializedVersion: 4
@@ -172,6 +146,37 @@ MonoBehaviour:
   m_StayInPlace: {fileID: 3136054486328549664}
   m_GoWithHand: {fileID: 3831636179409446610}
   m_DeleteThis: {fileID: 0}
+--- !u!60 &1207295446412066423
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371828539753458807}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -7.08, y: 1.51}
+      - {x: -6.15, y: 0.98}
+      - {x: -3.07, y: 4.89}
+      - {x: 1.18, y: 4.47}
+      - {x: 1.31, y: 5.76}
+      - {x: -4.14, y: 6.62}
 --- !u!1 &2371828540885850253
 GameObject:
   m_ObjectHideFlags: 0

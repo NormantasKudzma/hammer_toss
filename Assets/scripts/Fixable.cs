@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Fixable : MonoBehaviour
 {
+    public GameObject Counter;
     public string m_NextLevel;
     public GameObject m_HitEffect;
     public Sprite m_FixedSprite;
@@ -17,6 +18,7 @@ public class Fixable : MonoBehaviour
     private bool m_Countdown = false;
 
     private ShakeController m_SceenShaker;
+    private HammerCounter m_Counter;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class Fixable : MonoBehaviour
         Debug.Assert(SceneManager.GetSceneByName(m_NextLevel) != null, "Scene with name " + m_NextLevel + " Does not exist!!");
         
         m_SceenShaker = gameObject.AddComponent<ShakeController>();
+        m_Counter = Counter.GetComponent<HammerCounter>();
     }
 
     // Update is called once per frame
@@ -79,6 +82,13 @@ public class Fixable : MonoBehaviour
         if (m_BrokenObject != null)
         {
             m_BrokenObject.SetActive(false);
+        }
+        if (m_Counter != null)
+        {
+            if (HammerCounter.CurrentCount < 3)
+            {
+                m_Counter.IncreaseOne();
+            }
         }
     }
 

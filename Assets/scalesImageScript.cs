@@ -5,7 +5,10 @@ using UnityEngine;
 public class scalesImageScript : MonoBehaviour
 {
     public GameObject imagescale;
-    Vector3 a;
+    
+    private bool a;
+    public int SizeToScale;
+    public int SizeToDownScale;
 
     // Start is called before the first frame update
     private void Awake()
@@ -17,16 +20,26 @@ public class scalesImageScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
-        if(imagescale.transform.localScale.x >= 300)
+        
+        if (imagescale.transform.localScale.x >= SizeToScale)
         {
-            imagescale.transform.localScale -= new Vector3(100 * Time.deltaTime,100 * Time.deltaTime, 100 * Time.deltaTime);
+            a = true;
+            
+            
         }
-        if (imagescale.transform.localScale.x <= 300)
+        if (imagescale.transform.localScale.y <= -SizeToDownScale)
+        {
+            
+            a = false;
+        }
+        if(a)
+        {
+            imagescale.transform.localScale += new Vector3(-100 * Time.deltaTime, -100 * Time.deltaTime, -100 * Time.deltaTime);
+        }
+        if(!a)
         {
             imagescale.transform.localScale += new Vector3(100 * Time.deltaTime, 100 * Time.deltaTime, 100 * Time.deltaTime);
-            return;
         }
     }
 }

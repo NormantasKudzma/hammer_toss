@@ -11,6 +11,7 @@ public class ThrowItem : MonoBehaviour
         STATE_THROWING,
     }
 
+    public GameObject Counter;
     public Rigidbody2D throwitem;
     public bool wark;
     public float strenght = 45;
@@ -29,6 +30,8 @@ public class ThrowItem : MonoBehaviour
     private Vector3 m_StartingPos;
     private float m_IdleAngle = 0.0f;
     public GameObject m_PivotObject;
+
+    private HammerCounter m_Counter;
   
     int a = 0;
     // Start is called before the first frame update
@@ -39,10 +42,23 @@ public class ThrowItem : MonoBehaviour
 
         m_State = State.STATE_IDLE;
         m_StartingPos = transform.position;
+
+        m_Counter = Counter.GetComponent<HammerCounter>();
     }
     
     void throwObject()
     {
+        if (m_Counter != null)
+        {
+            if (m_Counter.CurrentCount <= 0)
+            {
+                return;
+            }
+            else
+            {
+                m_Counter.DecreaseOne();
+            }
+        }
         throwitem.constraints = RigidbodyConstraints2D.None;
 
         var throwAngle = m_IdleAngle - 50.0f;

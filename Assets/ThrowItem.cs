@@ -50,7 +50,7 @@ public class ThrowItem : MonoBehaviour
     {
         if (m_Counter != null)
         {
-            if (m_Counter.CurrentCount <= 0)
+            if (HammerCounter.CurrentCount <= 0)
             {
                 return;
             }

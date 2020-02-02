@@ -7,15 +7,22 @@ public class HammerCounter : MonoBehaviour
     public int InitialCount = 3;
     public GameObject[] Hammers;
 
-    public int CurrentCount = 0;
+    static public int CurrentCount = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        CurrentCount = InitialCount;
+        //CurrentCount = InitialCount;
         for (int i = 0; i < Hammers.Length; ++i)
         {
-            Hammers[i].SetActive(true);
+            if (i < CurrentCount)
+            {
+                Hammers[i].SetActive(true);
+            }
+            else
+            {
+                Hammers[i].SetActive(false);
+            }
         }
     }
 

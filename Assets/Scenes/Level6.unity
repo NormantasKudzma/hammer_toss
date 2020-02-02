@@ -932,7 +932,7 @@ PrefabInstance:
     - target: {fileID: 5988996177618918133, guid: d60abea6339ad024f80fe028600a60dd,
         type: 3}
       propertyPath: m_Text
-      value: zirkles perdaryti
+      value: What now?
       objectReference: {fileID: 0}
     - target: {fileID: 5988996177618918133, guid: d60abea6339ad024f80fe028600a60dd,
         type: 3}

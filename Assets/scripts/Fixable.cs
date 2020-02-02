@@ -16,12 +16,15 @@ public class Fixable : MonoBehaviour
     private float m_TimeUntilRepaired = 0.3f;
     private bool m_Countdown = false;
 
+    private ShakeController m_SceenShaker;
+
     // Start is called before the first frame update
     void Start()
     {
         Debug.Assert(m_NextLevel != null, "Missing next level!!");
         Debug.Assert(SceneManager.GetSceneByName(m_NextLevel) != null, "Scene with name " + m_NextLevel + " Does not exist!!");
         
+        m_SceenShaker = gameObject.AddComponent<ShakeController>();
     }
 
     // Update is called once per frame
@@ -85,5 +88,7 @@ public class Fixable : MonoBehaviour
         {
             Instantiate(m_HitEffect, transform);
         }
+
+        m_SceenShaker.ViolentShake();
     }
 }

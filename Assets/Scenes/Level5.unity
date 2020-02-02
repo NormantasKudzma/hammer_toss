@@ -128,6 +128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1484785905, guid: 30454e6208d673443999948a4839661e, type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5270377969503760068, guid: 30454e6208d673443999948a4839661e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -664,6 +668,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: money_arm
       objectReference: {fileID: 0}
+    - target: {fileID: 2371828539753458807, guid: 20bf352ace8747f45aad628bea759654,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20bf352ace8747f45aad628bea759654, type: 3}
 --- !u!1 &1234193095
@@ -774,6 +783,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &1547392607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5270377969503760088, guid: 30454e6208d673443999948a4839661e,
+    type: 3}
+  m_PrefabInstance: {fileID: 427528833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1547392608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547392607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5322ea28c93e366419c9b3b9ab1a2333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1547392610}
+  MoveUpTillCoordinates: 20
+  DownCoordinatesTill: 6.1
+--- !u!50 &1547392610 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1484785905, guid: 30454e6208d673443999948a4839661e,
+    type: 3}
+  m_PrefabInstance: {fileID: 427528833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1751616165
 GameObject:
   m_ObjectHideFlags: 0

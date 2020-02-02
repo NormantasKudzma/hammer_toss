@@ -39,6 +39,14 @@ public class HammerCounter : MonoBehaviour
             Hammers[CurrentCount - 1].SetActive(false);
         }
         CurrentCount--;
+    }
 
+    public void IncreaseOne()
+    {
+        if (CurrentCount >= 0 && CurrentCount < 3)
+        {
+            Hammers[CurrentCount].SetActive(true);
+        }
+        CurrentCount++;
     }
 }
